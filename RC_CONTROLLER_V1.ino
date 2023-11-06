@@ -3,6 +3,7 @@
 #include <RF24.h>
 #include "Functions.h"
 #include "Thumbstick.h"
+#include "StickValues.h"
 #include "PinDefinitions.h"
 
 
@@ -32,12 +33,8 @@ void setup() {
 
 void loop() {
   if(s1.calibrated() && s2.calibrated()){
-    data.x1 = s1.getX();
-    data.y1 = s1.getY();
-    data.s1 = s1.getSwitch();
-    data.x2 = s2.getX();
-    data.y2 = s2.getY();
-    data.s2 = s2.getSwitch();
+    data.stick1 = s1.getStickValues();
+    data.stick2 = s2.getStickValues();
     radio.write(&data,sizeof(data));
   }
   delay(25);

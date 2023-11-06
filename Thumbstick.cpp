@@ -11,7 +11,7 @@ Thumbstick::Thumbstick(byte xPin,byte yPin, byte switchPin, byte ledPin){
 void Thumbstick::init()
 {
   pinMode(xPin, INPUT);
-  pinMode(yPin, INPUT)
+  pinMode(yPin, INPUT);
   pinMode(switchPin, INPUT_PULLUP);
   pinMode(ledPin,OUTPUT);
 
@@ -85,7 +85,7 @@ int Thumbstick::getY()
 }
 
 StickValues Thumbstick::getStickValues(){
-   return StickValues(getX(),  getY(), getSwitch());
+   return { (short) getX(), (short) getY(),  getSwitch()};
 }
 
 void Thumbstick::setXInverted(bool inverted)
